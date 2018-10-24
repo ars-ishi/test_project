@@ -1,0 +1,33 @@
+<%= form_with(model: squire, local: true, class: "form-horizontal") do |form| %>
+  <% if squire.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(squire.errors.count, "error") %> prohibited this squire from being saved:</h2>
+
+      <ul>
+      <% squire.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title, class: 'control-label' %>
+    <div class="controls">
+      <%= form.text_field :title, id: :squire_title, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description, class: 'control-label' %>
+    <div class="controls">
+      <!-- <%= form.text_area :description, id: :squire_description %> -->
+      <%= text_field :description, :name, class: "form-control", style: "display:none" %>
+      <%= text_area :description, :name, id: "seditor" %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

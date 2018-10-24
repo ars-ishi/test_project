@@ -1,0 +1,15 @@
+<div>projects#showページ</div>
+<div>makuakeのプロジェクト詳細ページ</div>
+<div><a href="/users/sign_up">サインアップ</a></div>
+<div><a href="/users/sign_in">サインイン</a></div>
+<br><br>
+<div>
+<p>プロジェクト名:<%= @project.name %></p>
+<p>目標金額:<%= @project.target_sales %>円</p>
+<p>集まった金額:<%= @project.total_sales %>円</p>
+<p>達成率:<%= @progress_rate %>%</p>
+<p>支援者数:<%= @supporters %>人</p>
+<% @courses.each do |course| %>
+  <p><a href="/projects/<%= course.project_id %>/courses/<%= course.id %>"><%= course.name %></a></p>
+<% end %>
+</div>

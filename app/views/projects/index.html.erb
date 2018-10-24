@@ -1,0 +1,29 @@
+<div>root</div>
+<div>projects#indexページ</div>
+<div>makuakeのTOP</div>
+<div><a href="/users/sign_up">サインアップ</a></div>
+<div><a href="/users/sign_in">サインイン</a></div>
+<div><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></div>
+<br><br>
+<div>
+<% @projects.each do |project| %>
+  <p><a href="projects/<%= project.id %>"><%= project.name %></a></p>
+<% end %>
+</div>
+<div>
+  <div><%= link_to "squireテスト", new_squire_path %></div>
+  <button>aaa</button>
+  <div class="btn-toolbar" role="toolbar" aria-label="...">
+</div>
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    ドロップダウン
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="#">メニュー1</a></li>
+    <li><a href="#">メニュー2</a></li>
+    <li><a href="#">メニュー3</a></li>
+    <li><a href="#">メニュー4</a></li>
+  </ul>
+</div>

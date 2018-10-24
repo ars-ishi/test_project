@@ -1,0 +1,18 @@
+<div>orders#newページ</div>
+<div>申し込み内容を確認するページ</div>
+<div><a href="/">プロジェクトの一覧に戻る</a></div>
+<div><a href="/users/sign_up">サインアップ</a></div>
+<div><a href="/users/sign_in">サインイン</a></div>
+<p>---------------------------------------------</p>
+<div>
+  <p>決済が完了しました</p>
+  <p>プロジェクトの目標金額:<%= @target_sales %>円</p>
+  <p>今回のユーザーが支援した額:<%= @total_price %>円</p>
+  <p>過去にこのプロジェクトで購入された額</p>
+  <% @orders.each do |order| %>
+  <p>  テスト:<%= order.total_price %>円</p>
+  <% end %>
+  <p>ユーザーの購入前にプロジェクトで集まっていた金額:<%= @present_total_sales %>円</p>
+  <p>プロジェクトで集まった合計金額<%= @update_total_sales %>円</p>
+  <p><a href="/">トップページに戻る</a></p>
+</div>

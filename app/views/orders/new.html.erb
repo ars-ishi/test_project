@@ -1,0 +1,49 @@
+<div>orders#newページ</div>
+<div>申し込み内容を確認するページ</div>
+<div><a href="/">プロジェクトの一覧に戻る</a></div>
+<div><a href="/users/sign_up">サインアップ</a></div>
+<div><a href="/users/sign_in">サインイン</a></div>
+<p>---------------------------------------------</p>
+<div>
+  <p>コース名:<%= @course.name %></p>
+  <p>価格:<%= @course.price %>円</p>
+  <p>個数:<%= @order_count %></p>
+  <p>支払い価格:<%= @total_price %>円</p>
+  <p>住所:<%= @address.prefecture %></p>
+</div>
+
+<div>
+<%= form_for @order do |f| %>
+  <input type="hidden" name="course_id" value="<%= @course.id %>">
+  <!-- <%= hidden_field :course_id, @course.id %> -->
+  <%= f.hidden_field :project_id, value:@project.id %>
+  <%= f.hidden_field :total_price, value:@total_price %>
+  <%= f.hidden_field :address, value:@address.prefecture %>
+  <%= f.hidden_field :payment, value:"1" %>
+  <%= f.fields_for :order_details do |detail| %>
+    <%= detail.hidden_field :course_id, value:@course.id %>
+    <%= detail.hidden_field :order_count, value:@order_count %>
+    <%= detail.hidden_field :confirm_price, value:@course.price %>
+    <%= detail.hidden_field :confirm_duedate, value:"1" %>
+  <% end %>
+  <%= f.submit '購入する'%>
+<% end %>
+</div>
+
+
+<!-- create_table :orders do |t|
+  t.references :user, foreign_key: true
+  t.integer :total_price
+  t.string :address
+  t.string :payment
+  t.timestamps
+end
+
+create_table :order_details do |t|
+  t.references :order, foreign_key: true
+  t.references :course, foreign_key: true
+  t.integer :order_count
+  t.integer :confirm_price
+  t.integer :confirm_duedate
+  t.timestamps
+end -->

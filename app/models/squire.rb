@@ -1,0 +1,2 @@
+class Squire < ApplicationRecord
+end

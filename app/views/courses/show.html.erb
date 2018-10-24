@@ -1,0 +1,31 @@
+<div>courses#showページ</div>
+<div>コースの詳細と支払い方法選ぶページ</div>
+<div><a href="/">プロジェクトの一覧に戻る</a></div>
+<div><a href="/users/sign_up">サインアップ</a></div>
+<div><a href="/users/sign_in">サインイン</a></div>
+<p>---------------------------------------------</p>
+<div>
+<p>コース名:<%= @course.name %></p>
+<p>価格:<%= @course.price %>円</p>
+<!-- <p>送付先の住所を選ぶ</p>
+<% @addresses.each do |address| %>
+<p><%= address.prefecture %></p>
+<% end %>
+<p>個数を入力する</p>
+<p><a href="/orders/new">次へ</a></p>
+<%= link_to '次へ', new_order_path(@order, course_id: 1, address_id: 1) %> -->
+<%= form_tag('/orders/new', method: :get) do %>
+  <h3>購入情報</h3>
+  <input type="hidden" name="course_id" value="<%= @course.id %>">
+  <input type="hidden" name="project_id" value="<%= @project.id %>">
+  <h4>在庫:<%= @course.stock %></h4>
+  <input type="number" placeholder="個数" name="order_count" min="1" max="<%= @course.stock %>" required><br>
+  <h4>送付先</h4>
+  <select name="address_id">
+    <% @addresses.each do |address| %>
+      <option value="<%= address.id %>"><%= address.prefecture %></option>
+    <% end %>
+  </select><br>
+  <input type="submit" value="決済へ">
+<% end %>
+</div>
